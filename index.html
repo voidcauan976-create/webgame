@@ -1,1 +1,102 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebGame</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      font-size: 5em;
+      margin: 50px 0 30px 0;
+      color: #ff4500;
+    }
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      padding: 0 10px;
+    }
+    .menu a, .menu button {
+      display: inline-block;
+      padding: 15px 20px;
+      color: #00f;
+      text-decoration: none;
+      border: 2px solid #00f;
+      border-radius: 10px;
+      font-size: 1.2em;
+      transition: 0.3s;
+      background: none;
+      cursor: pointer;
+    }
+    .menu a:hover, .menu button:hover {
+      background-color: #00f;
+      color: #fff;
+    }
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 2px solid #00f;
+      font-size: 1em;
+      margin-right: 10px;
+      width: 150px;
+    }
+    @media (max-width: 500px) {
+      h1 { font-size: 3em; }
+      input { width: 120px; margin-bottom: 10px; }
+      .menu { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>WebGame</h1>
+  <div class="menu">
+    <a href="https://www.roblox.com/login" target="_blank">Play Now</a>
+    <a href="https://www.roblox.com/CreateAccount" target="_blank">Sign Up</a>
+    <a href="https://www.roblox.com/login" target="_blank">Login</a>
+    <a href="https://www.roblox.com/games" target="_blank">Games</a>
+    <a href="https://www.roblox.com/catalog" target="_blank">Catalog</a>
+    <a href="https://www.roblox.com/communities" target="_blank">Group</a>
+
+    <!-- Profile dinâmico -->
+    <input type="text" id="profileIdInput" placeholder="Digite seu ID">
+    <button onclick="openProfile()">Profile</button>
+
+    <!-- Users com pesquisa -->
+    <input type="text" id="userSearchInput" placeholder="Pesquisar usuário">
+    <button onclick="searchUser()">Users</button>
+  </div>
+
+  <script>
+    function openProfile() {
+      const id = document.getElementById('profileIdInput').value.trim();
+      if(id) {
+        const url = `https://www.roblox.com/users/${encodeURIComponent(id)}/profile`;
+        window.open(url, '_blank');
+      } else {
+        alert('Digite um ID para ver o perfil!');
+      }
+    }
+
+    function searchUser() {
+      const username = document.getElementById('userSearchInput').value.trim();
+      if(username) {
+        const url = `https://www.roblox.com/search/users?keyword=${encodeURIComponent(username)}`;
+        window.open(url, '_blank');
+      } else {
+        alert('Digite um nome de usuário para pesquisar!');
+      }
+    }
+  </script>
+</body>
+</html>
